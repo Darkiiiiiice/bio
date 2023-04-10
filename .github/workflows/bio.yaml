@@ -6,14 +6,10 @@ name: Docker
 # documentation.
 
 on:
-#   schedule:
-#     - cron: '22 4 * * *'
   push:
-    branches: [ "test" ]
-    # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
+    branches: [ "stable" ]
   pull_request:
-    branches: [ "test" ]
+    branches: [ "stable" ]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -70,7 +66,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

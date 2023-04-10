@@ -1,10 +1,10 @@
-FROM debian:11
+FROM golang:latest
 
 WORKDIR /mariomang
-COPY ./build/bin/* /mariomang
-
-ENV GITHUB_TOKEN=your_token
+COPY ./build/bin/bio /mariomang/bio
 
 RUN apt-get update && apt-get install -y ca-certificates
 
-CMD ["./bio"]
+ENV GITHUB_TOKEN=your_token
+
+CMD ["/mariomang/bio"]
