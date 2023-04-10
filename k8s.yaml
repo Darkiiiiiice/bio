@@ -1,7 +1,7 @@
-apiVersion: batch/v2alpha1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: BIO
+  name: bio-cronjob
 spec:
   schedule: "*/5 * * * *"
   jobTemplate:
@@ -9,7 +9,7 @@ spec:
       template:
         spec:
           containers:
-            - name: BIO
+            - name: bio
               image: docker.io/mariomang/bio:latest
               imagePullPolicy: IfNotPresent
               env:
