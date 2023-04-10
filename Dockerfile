@@ -1,7 +1,7 @@
 FROM debian:stable
 
 WORKDIR /mariomang
-COPY ./build/* /mariomang
+COPY ./build/bin/* /mariomang
 
 ENV GITHUB_TOKEN=your_token
 
