@@ -101,3 +101,18 @@ func UpdateGithubUserBio(token string, bio string) error {
 
 	return nil
 }
+
+var (
+	GoVersion    = "unknown"
+	BuildVersion = "unknown"
+	BuildTime    = "unknown"
+	CommitID     = "unknown"
+)
+
+func init() {
+	fmt.Printf("BuildInfo: \n")
+	fmt.Printf("-- BuildVersion: %v \n", BuildVersion)
+	fmt.Printf("-- BuildTime:    %v \n", BuildTime)
+	fmt.Printf("-- BuildWith:    %v \n", GoVersion)
+	fmt.Printf("-- CommitID:     %v \n\n", CommitID)
+}
