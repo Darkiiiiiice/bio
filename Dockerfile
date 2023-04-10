@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:11
 
 WORKDIR /mariomang
 COPY ./build/bin/* /mariomang
