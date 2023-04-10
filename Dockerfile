@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM ubuntu:latest
 
 WORKDIR /mariomang
 COPY ./build/bin/bio /mariomang/bio
