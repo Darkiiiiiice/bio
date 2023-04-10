@@ -9,7 +9,7 @@ TARGET_PATH = ${BUILD_DIR}/bin
 TARGET_NAME = bio
 
 build: fmt vet
-	GOOS=linux GOARCH=amd64 go build -ldflags  \
+	go build -ldflags  \
     "                                        \
     -X 'main.GoVersion=${GO_VERSION}'        \
     -X 'main.BuildVersion=${BUILD_VERSION}'  \
