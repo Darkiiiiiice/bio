@@ -1,0 +1,21 @@
+apiVersion: batch/v2
+kind: CronJob
+metadata:
+  name: BIO
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: BIO
+              image: docker.io/mariomang/bio:latest
+              imagePullPolicy: IfNotPresent
+              env:
+                - name: GITHUB_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: bio
+                      key: token
+          restartPolicy: OnFailure
