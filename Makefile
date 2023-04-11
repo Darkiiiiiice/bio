@@ -7,9 +7,11 @@ COMMIT_SHA1     := $(shell git rev-parse HEAD )
 BUILD_DIR = build
 TARGET_PATH = ${BUILD_DIR}/bin
 TARGET_NAME = bio
+OS=linux
+ARCH=amd64
 
 build: fmt vet
-	GOOS=linux GOARCH=amd64 go build -ldflags  \
+	GOOS=${OS} GOARCH=${ARCH} go build -ldflags  \
     "                                        \
     -X 'main.GoVersion=${GO_VERSION}'        \
     -X 'main.BuildVersion=${BUILD_VERSION}'  \
