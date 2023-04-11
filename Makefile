@@ -1,4 +1,4 @@
-BUILD_VERSION   := 1.0.0
+BUILD_VERSION   := 1.0.1
 BUILD_TIME      := $(shell date "+%F %T")
 BUILD_TAG       := $(shell date "+%Y%m%d-%H%M")
 GO_VERSION      := $(shell go version)
