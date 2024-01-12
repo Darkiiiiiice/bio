@@ -16,4 +16,5 @@ vendor/
 .vscode/
 .idea/
 build/
+.DS_Store
 

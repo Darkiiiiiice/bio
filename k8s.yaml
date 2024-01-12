@@ -3,14 +3,15 @@ kind: CronJob
 metadata:
   name: bio-cronjob
 spec:
-  schedule: "*/30 * * * *"
+  schedule: "*/10 * * * *"
   jobTemplate:
     spec:
+      parallelism: 1
       template:
         spec:
           containers:
             - name: bio
-              image: docker.io/mariomang/bio:latest
+              image: docker.io/mariomang/bio:1.0.3
               imagePullPolicy: Always
               env:
                 - name: GITHUB_TOKEN

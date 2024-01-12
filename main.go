@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/mariomang/hitokoto-go"
@@ -16,10 +17,12 @@ import (
 
 func main() {
 
-	github := os.Getenv("GITHUB_TOKEN")
+	github := strings.TrimSpace(os.Getenv("GITHUB_TOKEN"))
 	if github == "" {
 		panic(errors.New("the environment variable GITHUB_TOKEN not found"))
 	}
+	fmt.Printf("================================\n")
+	fmt.Printf("-- TOKEN: %s\n", github)
 
 	executor := hitokoto.NewExecutor()
 
@@ -78,22 +81,27 @@ func UpdateGithubUserBio(token string, bio string) error {
 
 	req, err := http.NewRequest(http.MethodPatch, url, bytes.NewReader(payload))
 	if err != nil {
+		fmt.Printf("http.NewRequest %+v\n", err)
 		return err
 	}
 
 	req.Header.Set("Accept", "application/vnd.github+json")
-	req.Header.Set("Authorization", "Bearer "+token)
+	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", token))
 	req.Header.Set("X-GitHub-Api-Version", "2022-11-28")
+
+	fmt.Printf("req: Header: %+v\n", req.Header)
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
+		fmt.Printf("client.Do %+v\n", err)
 		return err
 	}
 	defer resp.Body.Close()
 
 	b, err := io.ReadAll(resp.Body)
 	if err != nil {
+		fmt.Printf("io.ReadAll %+v\n", err)
 		return err
 	}
 

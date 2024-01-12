@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: bio
+type: Opaque
+data:
+  token: <echo "your github token" | base64>
